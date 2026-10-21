@@ -43,6 +43,15 @@ put git/gitconfig-work "$HOME/.gitconfig-work"
 put git/gitconfig-personal "$HOME/.gitconfig-personal"
 put config/caveman/config.json "$HOME/.config/caveman/config.json"
 
+# RTK config (carries the git diff/log/status/maestri exclusions). macOS path only.
+# shortcut: Linux and Windows keep RTK config elsewhere; add those paths when the kit is restored there.
+if [ "$(uname -s)" = "Darwin" ]; then
+  put rtk/config.toml "$HOME/Library/Application Support/rtk/config.toml"
+  put rtk/filters.toml "$HOME/Library/Application Support/rtk/filters.toml"
+else
+  echo "skipped rtk/*.toml: not macOS; copy them to this OS's RTK config folder by hand (see rtk/)"
+fi
+
 # ~/.zshrc is personal: only append the Graphify line when it is missing.
 LINE="$(cat "$KIT/shell/graphify.zsh")"
 if ! grep -qxF "$LINE" "$HOME/.zshrc" 2>/dev/null; then
