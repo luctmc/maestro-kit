@@ -1,0 +1,38 @@
+path=/Users/lucas/Documents/GitHub/vibe-coding-toolkit
+origin=https://github.com/luctmc/vibe-coding-toolkit.git
+branch=main
+sha=de66fe371a49f5a4d3b521759e5c401f390b6424
+date=2026-10-17
+recorded=2026-10-21
+policy=no git pull without user approval
+
+# Step 1 pins (resolved 2026-10-21; clients cannot pin marketplace by SHA, installed from HEAD at these SHAs)
+claude-marketplace claude-plugins-official=d1adba47161a271799de7b548225d929310046bd superpowers=7.0.0 (upstream sha bb92a77741419a4ab5f06e711a283343f1ada0c3)
+marketplace ponytail=09c434ab73ca43761c5d8b0c5d341926c2fba710 plugin=5.3.2
+marketplace caveman=bad48a0e1df55e05e3f52249afa35ecc1909ee76 plugin=4.0.1
+marketplace context7=98fb27dbcbc8fb04227ef4f15a14f623ffdeb9f8 claude=1.0.4 codex=1.0.2
+codex-marketplace superpowers-dev(obra/superpowers)=b739a8af570e10a95898f2bdf6cec97467fa6c12 plugin=7.0.0
+rtk=1.0.1 (brew rtk-ai/tap) uv=0.13.4 pnpm=12.14.0 fd=10.5.0 agent-browser=0.39.1 (chrome 156.0.8078.47) graphifyy=0.9.93
+
+# Step 2 pins (installed from HEAD at these SHAs, all disabled except skill-creator)
+mattpocock=5beb35b040e3de97e54fa9e386d7e42d15c295c2
+dotnet-agent-skills=c848e7fffab05c594f9b954c6f3beb373d108447
+azure-skills=5be6708de8c5af9dd54b175b98ea00ed2d35deae
+google-plugins=631ec04e732c4b6afb1e9ff828f0d02ecb175cc7
+n8n-mcp-skills=c640094d949c5a7bfce7d51fc9c049e3dcd3be44 (plugin 1.36.0)
+claude-plugins-official=d1adba47161a271799de7b548225d929310046bd
+
+# Step 3 pins (skills CLI 1.7.4 has no pin flag; installed from HEAD at these SHAs, global, claude-code+codex)
+emilkowalski/skills=2d228630ba1446365f614a108cb8252f1feda202
+remotion-dev/skills=039e8a2fc78b67efc228d5645367838b85818a1c
+vibe-motion/skills=4c86c0d016a3ba22ee673428a494f3c44f84111f
+iart-ai/motion-design-skills=3c129f769d90a1328c209c386492333c9ac62312
+iart-ai/web-animation-skills=b6dba3eb759726845a44163ff0bad70dd9e7fbb6
+iart-ai/kinetic-typography-skills=fccc94bd325d824235ee9e715e65abde57b6513a
+iart-ai/explainer-video-skills=3e2d411b725d9a72939cf8e5eb81579e751373e7
+iart-ai/data-animation-skills=8ce2709c3992490251e8a991535b1945f01c6865
+iart-ai/ad-video-skills=0de0f2a1c1f42a98103fc0ec436509276428372c
+iart-ai/tiktok-video-skills=2a775336b5a638cbf8a61dbd785f9a1b649be016
+anthropics/skills=dbd4588f9e1033efb41dad4bef2f7947c8993d44 (frontend-design, canvas-design only)
+iart-ai/lower-thirds-skills: NOT installed (conflict: lower-thirds already from tiktok-video-skills)
+# 77 Step3 skills: Claude skillOverrides=name-only (settings.json); Codex policy.allow_implicit_invocation=false (each skill agents/openai.yaml). List: ~/.maestro/step3-skills.json

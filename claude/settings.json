@@ -1,0 +1,191 @@
+{
+  "env": {
+    "GRAPHIFY_NO_AUTO_REFRESH": "1",
+    "AZURE_MCP_COLLECT_TELEMETRY": "false"
+  },
+  "permissions": {
+    "deny": [
+      "Bash(git push --force*)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(git reset --hard *)",
+      "Bash(git branch -D *)",
+      "Bash(maestri floor land *)",
+      "Bash(maestri floor delete *)",
+      "Bash(rm *)"
+    ]
+  },
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "context7@context7-marketplace": true,
+    "ponytail@ponytail": true,
+    "caveman@caveman": true,
+    "skill-creator@claude-plugins-official": true,
+    "mattpocock-skills@mattpocock": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "csharp-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "dotnet@dotnet-agent-skills": false,
+    "dotnet-test@dotnet-agent-skills": false,
+    "dotnet-aspnetcore@dotnet-agent-skills": false,
+    "dotnet-diag@dotnet-agent-skills": false,
+    "dotnet-data@dotnet-agent-skills": false,
+    "dotnet-upgrade@dotnet-agent-skills": false,
+    "azure@azure-skills": false,
+    "google-cloud-developer@google-plugins": false,
+    "n8n-mcp-skills@n8n-mcp-skills": false,
+    "code-review@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "context7-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "upstash/context7"
+      }
+    },
+    "mattpocock": {
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills"
+      }
+    },
+    "dotnet-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "dotnet/skills"
+      }
+    },
+    "azure-skills": {
+      "source": {
+        "source": "github",
+        "repo": "microsoft/azure-skills"
+      }
+    },
+    "google-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "google/skills"
+      }
+    },
+    "n8n-mcp-skills": {
+      "source": {
+        "source": "github",
+        "repo": "czlonkowski/n8n-skills"
+      }
+    }
+  },
+  "maxEffortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "skillOverrides": {
+    "3d-chladni-render": "name-only",
+    "60fps-animation": "name-only",
+    "accessible-animation": "name-only",
+    "ad-creative-video": "name-only",
+    "after-effects": "name-only",
+    "animate": "name-only",
+    "animate-expo": "name-only",
+    "animated-infographic": "name-only",
+    "animation-performance": "name-only",
+    "animation-principles": "name-only",
+    "animation-vocabulary": "name-only",
+    "apple-design": "name-only",
+    "ascii-animation": "name-only",
+    "ask-sonner": "name-only",
+    "beat-sync-editing": "name-only",
+    "brand-launch-video-star": "name-only",
+    "break-ui": "name-only",
+    "canvas-design": "name-only",
+    "caption-animation": "name-only",
+    "chart-animation": "name-only",
+    "claude-typer": "name-only",
+    "color-motion": "name-only",
+    "colorize": "name-only",
+    "countdown-video": "name-only",
+    "diagram-animation": "name-only",
+    "disney-animation-rule-skill": "name-only",
+    "emil-design-eng": "name-only",
+    "explainer-video": "name-only",
+    "find-animation-opportunities": "name-only",
+    "fisheye-motion": "name-only",
+    "frontend-design": "name-only",
+    "glassmorphism": "name-only",
+    "gsap-web": "name-only",
+    "improve-animations": "name-only",
+    "isometric-animation": "name-only",
+    "kinetic-typography": "name-only",
+    "launch-video": "name-only",
+    "light-spotlight-render": "name-only",
+    "logo-animation": "name-only",
+    "lottie-animation": "name-only",
+    "lower-thirds": "name-only",
+    "micro-interaction": "name-only",
+    "mobile-native": "name-only",
+    "motion-art-direction": "name-only",
+    "motion-background": "name-only",
+    "page-transition-animation": "name-only",
+    "pick-ui-library": "name-only",
+    "presentation-video": "name-only",
+    "printed-curtain-render": "name-only",
+    "procedural-fish-render": "name-only",
+    "prototype": "name-only",
+    "remotion-3d-ticker": "name-only",
+    "remotion-best-practices": "name-only",
+    "remotion-candlestick": "name-only",
+    "remotion-captions": "name-only",
+    "remotion-create": "name-only",
+    "remotion-docs": "name-only",
+    "remotion-interactivity": "name-only",
+    "remotion-maps": "name-only",
+    "remotion-markup": "name-only",
+    "remotion-multimedia": "name-only",
+    "remotion-render": "name-only",
+    "remotion-saas": "name-only",
+    "remotion-studio": "name-only",
+    "remotion-upgrade": "name-only",
+    "remotion-video": "name-only",
+    "review-animations": "name-only",
+    "ruler-progress-render": "name-only",
+    "short-form-video": "name-only",
+    "shot-composition": "name-only",
+    "svg-animation": "name-only",
+    "testimonial-video": "name-only",
+    "threejs-earth-render": "name-only",
+    "wechat-2d-render": "name-only",
+    "whiteboard-animation": "name-only",
+    "wrapped-video": "name-only",
+    "write-swift": "name-only"
+  }
+}

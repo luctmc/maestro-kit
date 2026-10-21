@@ -1,0 +1,32 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[user]
+	name = Lucas Timponi Mercadante Castro
+	useConfigOnly = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+# Identity is chosen by remote URL, not by folder. Unknown remote: user.email stays unset (useConfigOnly).
+# Personal first, work last: a repo with both kinds of remote gets the work identity.
+[includeIf "hasconfig:remote.*.url:https://github.com/luctmc/**"]
+	path = /Users/lucas/.gitconfig-personal
+[includeIf "hasconfig:remote.*.url:https://*@github.com/luctmc/**"]
+	path = /Users/lucas/.gitconfig-personal
+[includeIf "hasconfig:remote.*.url:git@github.com:luctmc/**"]
+	path = /Users/lucas/.gitconfig-personal
+[includeIf "hasconfig:remote.*.url:https://dev.azure.com/**"]
+	path = /Users/lucas/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:https://*@dev.azure.com/**"]
+	path = /Users/lucas/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:git@ssh.dev.azure.com:v3/**"]
+	path = /Users/lucas/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:https://*.visualstudio.com/**"]
+	path = /Users/lucas/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:*@vs-ssh.visualstudio.com:v3/**"]
+	path = /Users/lucas/.gitconfig-work
