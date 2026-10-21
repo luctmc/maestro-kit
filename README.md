@@ -154,7 +154,7 @@ Rules: one step at a time; before each step show exactly what will change and wa
 Step 0 - Safety and identity
 - Back up only configuration (not session history) of ~/.claude, ~/.codex and ~/.gitconfig into ~/.maestro/backups/<date>/.
 - Merge into ~/.claude/settings.json: permissions.ask = Bash(git commit *), Bash(git push *), Bash(git merge *), Bash(git rebase *), Bash(git reset --hard *), Bash(git branch -D *), Bash(maestri floor land *), Bash(maestri floor delete *), Bash(rm *); permissions.deny = Bash(git push --force*); maxEffortLevel "high"; attribution { commit: "", pr: "", sessionUrl: false }.
-- Git: user.name "Lucas Timponi Mercadante Castro", user.useConfigOnly true, identity by remote with includeIf "hasconfig:remote.*.url:...": Azure DevOps (dev.azure.com, *.visualstudio.com) -> lucas.castro@montreal.com.br; github.com/luctmc -> luctmc@outlook.com.
+- Git: user.name "Lucas Timponi Mercadante Castro", user.useConfigOnly true, identity by remote with includeIf "hasconfig:remote.*.url:...": Azure DevOps (dev.azure.com, *.visualstudio.com) -> lucas.castro@montreal.com.br; github.com/luctmc -> luctmc@outlook.com. AFTER those rules (last one wins), add includeIf "gitdir:~/Documents/GitHub/CIINTEC*/" -> lucas.castro@montreal.com.br, because the CIINTEC* folders are work even when their remote is on the personal GitHub.
 - ~/.codex/rules/default.rules: prefix_rule decision="forbidden" for git commit, push, merge, rebase, reset, branch -D.
 
 Step 1 - Methodology (vibe-coding-toolkit, local pinned copy at ~/Documents/GitHub/vibe-coding-toolkit)
@@ -217,7 +217,7 @@ Esperado: `Rejected ... Git write commands are reserved to the Maestro`.
 
 **4. Trava de git no Claude:** quando o Maestro tentar um `rm`, `git commit` ou `git push`, deve aparecer "Permission rule … requires confirmation" mesmo com *bypass permissions on*. Responda **1. Yes** para permitir só aquela vez; nunca a opção 2, que libera para sempre.
 
-**5. Identidade git:** peça ao Maestro `git config user.email` em um repositório de trabalho e em um pessoal. Num commit de teste, confira que não aparece `Co-Authored-By`.
+**5. Identidade git:** peça ao Maestro `git config user.email` em um repositório de trabalho do Azure, no repositório `CIINTEC` (remoto no GitHub pessoal, deve dar o e-mail de trabalho) e em um pessoal. Num commit de teste, confira que não aparece `Co-Authored-By`.
 
 ## Uso no dia a dia
 
@@ -228,7 +228,7 @@ Esperado: `Rejected ... Git write commands are reserved to the Maestro`.
 3. Pronto: ele já tem as skills, o catálogo, as regras de git e as travas. Nada de reinstalar.
 4. O que ele ainda não conhece é o projeto em si (stack, comandos); isso ele lê no repositório na primeira missão.
 
-**Identidade git em projeto novo:** com o mapeamento pelo remoto, repositórios do Azure DevOps usam `lucas.castro@montreal.com.br` e os do `github.com/luctmc` usam `luctmc@outlook.com`, automaticamente. Um repositório sem remoto (recém-criado com `git init`) não consegue commitar até ter remoto; o Maestro avisa e pergunta.
+**Identidade git em projeto novo:** com o mapeamento pelo remoto, repositórios do Azure DevOps usam `lucas.castro@montreal.com.br` e os do `github.com/luctmc` usam `luctmc@outlook.com`, automaticamente. Exceção: qualquer pasta `~/Documents/GitHub/CIINTEC*/` é trabalho e usa `lucas.castro@montreal.com.br` mesmo com remoto no GitHub pessoal; essa regra vem **depois** das de remoto no `~/.gitconfig`, para a pasta prevalecer. Projeto de trabalho novo com remoto no GitHub pessoal precisa ficar numa pasta `CIINTEC*` (ou ganhar uma regra `gitdir` própria). Um repositório sem remoto (recém-criado com `git init`) não consegue commitar até ter remoto; o Maestro avisa e pergunta.
 
 **Ciclo de uma missão:**
 
@@ -254,7 +254,7 @@ O procedimento é o mesmo; mudam caminhos e alguns comandos. O Maestro do Window
 | Ferramentas (RTK, uv, fd, pnpm) | Homebrew | winget ou scoop; o Maestro verifica a fonte de cada uma |
 | Config do RTK | `~/Library/Application Support/rtk/` | Caminho diferente; o Maestro verifica antes de copiar |
 | Skills via `npx skills` | Links normais | Use `--copy` para evitar problemas com links |
-| `includeIf` do git | Igual | Igual: o mapeamento é por remoto (`hasconfig`), não por caminho de pasta |
+| `includeIf` do git | Igual | Igual para as regras por remoto (`hasconfig`); na regra de pasta `CIINTEC*` use `gitdir/i:C:/Users/<você>/Documents/GitHub/CIINTEC*/` |
 | Fim de linha | — | `git config --global core.autocrlf true` |
 | Graphify | `GRAPHIFY_NO_AUTO_REFRESH` no `~/.zshrc` | `setx GRAPHIFY_NO_AUTO_REFRESH 1` |
 | Floors | Worktree ou cópia rápida | Só worktree |

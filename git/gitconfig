@@ -30,3 +30,6 @@
 	path = /Users/lucas/.gitconfig-work
 [includeIf "hasconfig:remote.*.url:*@vs-ssh.visualstudio.com:v3/**"]
 	path = /Users/lucas/.gitconfig-work
+# CIINTEC* folders are work even when the remote is on the personal GitHub: this must stay after the remote rules so the folder wins.
+[includeIf "gitdir:~/Documents/GitHub/CIINTEC*/"]
+	path = /Users/lucas/.gitconfig-work
