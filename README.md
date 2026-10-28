@@ -51,7 +51,7 @@ Tudo fica na sua pasta de usuário (`/Users/lucas`, escrito `~`). As pastas que 
 
 | Camada | O quê | Onde fica | No kit |
 | --- | --- | --- | --- |
-| App Maestri | Contas, presets, roles (Maestro e Motion Director) | Dados do Maestri; backup em Configurações → Dados | `maestri/` |
+| App Maestri | Contas, presets, roles (Maestro, Motion Director e Design Director) | Dados do Maestri; backup em Configurações → Dados | `maestri/` |
 | Máquina | Travas de git, skills só pelo nome, `maxEffortLevel`, `attribution`, hooks do RTK | `~/.claude/settings.json` | `claude/` |
 | Máquina | Preferências gerais (PT-BR, Caveman, Ponytail, regra dos workers) | `~/.claude/CLAUDE.md` e `~/.codex/AGENTS.md` (cada um importa o `RTK.md` da própria pasta) | `claude/`, `codex/` (inclui os dois `RTK.md`) |
 | Máquina | Plugins do Claude (Superpowers, Ponytail, Caveman, mattpocock, oficiais, cloud) | `~/.claude/plugins/` | lista em `PLUGINS.md` |
@@ -103,7 +103,7 @@ São duas partes: o que **você** faz à mão (esta seção, ~20 min) e o que o 
 
 ### 4. Presets (Terminal → Início Rápido)
 
-Crie estes 7 com "+ Adicionar preset". Depois **desmarque** os presets padrão "Claude Code" e "Codex" e mantenha "Shell". A lista também está em `maestri/presets.md`.
+Crie estes 8 com "+ Adicionar preset". Depois **desmarque** os presets padrão "Claude Code" e "Codex" e mantenha "Shell". A lista também está em `maestri/presets.md`.
 
 | Nome | Comando | Conta | Maestro |
 | --- | --- | --- | --- |
@@ -114,6 +114,7 @@ Crie estes 7 com "+ Adicionar preset". Depois **desmarque** os presets padrão "
 | Codex Luna 1 | `codex --yolo -m gpt-6-luna -c model_reasoning_effort=low` | Padrão | ☐ |
 | Codex Luna 2 | `codex --yolo -m gpt-6-luna -c model_reasoning_effort=low` | Codex 2 | ☐ |
 | Motion Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☑ |
+| Design Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☑ |
 
 O checkbox Maestro marcado no Motion Director é proposital: é o que permite a ele recrutar auxiliares.
 
@@ -121,6 +122,8 @@ O checkbox Maestro marcado no Motion Director é proposital: é o que permite a 
 
 - [ ] "+ Nova responsabilidade" → **Maestro**, espaço de trabalho **Global**, instruções de `maestri/roles/maestro.md` (ou da seção "Textos dos roles").
 - [ ] "+ Nova responsabilidade" → **Motion Director**, **Global**, instruções de `maestri/roles/motion-director.md`.
+- [ ] "+ Nova responsabilidade" → **Design Director**, **Global**, instruções de `maestri/roles/design-director.md`.
+- [ ] Leia `maestri/routing-matrix.md` e `maestri/quality-gates.md`; mantenha ambos disponíveis ao Maestro junto dos roles.
 
 ### 6. Primeiro terminal do Maestro
 
@@ -180,7 +183,11 @@ Step 5 - Verify (see section "Verificação final").
 
 ## Textos dos roles
 
-Os textos completos e atuais estão em `maestri/roles/maestro.md` e `maestri/roles/motion-director.md`. Cole cada um inteiro no campo **Instruções** do role correspondente (Agentes → Responsabilidades), com espaço de trabalho **Global**. Se você mudar algum role no Maestri, atualize também esses arquivos.
+Os textos completos e atuais estão em `maestri/roles/maestro.md`, `maestri/roles/motion-director.md` e `maestri/roles/design-director.md`. Cole cada um inteiro no campo **Instruções** do role correspondente (Agentes → Responsabilidades), com espaço de trabalho **Global**. Se você mudar algum role no Maestri, atualize também esses arquivos.
+
+## Atualização Quality-first (28/10/2026)
+
+O kit agora define responsabilidades globais de Design Director e Motion Director, o roteiro de seleção de especialistas (`maestri/routing-matrix.md`) e os gates objetivos (`maestri/quality-gates.md`). O Maestro continua executando a integração pelo Maestri. O Motion Director não delega criação, edição ou implementação de Motion para modelos diferentes de Opus 5.5. Atualize os roles e presets globais no aplicativo; os arquivos do GitHub não reconfiguram automaticamente a instalação do Maestri.
 
 ## Verificação final
 
@@ -195,14 +202,16 @@ a) "Corrija um texto errado no botão de login"
 b) "Crie uma tela de dashboard com gráficos e filtros"
 c) "Faça um vídeo institucional de 30s para o CIINTEC"
 d) "Gere uma imagem de capa para o site do Orbit"
+e) "Crie uma landing page de premiação, com tipografia editorial e scroll cinematográfico"
 ```
 
 | Pedido | Resposta esperada |
 | --- | --- |
 | a | L0, ele mesmo faz, **pergunta a branch base** (nunca presume `main`) |
-| b | L2, Claude Sonnet constrói, Codex revisa, Luna testa |
-| c | Motion Director (Opus 5.5), sem Remotion (trabalho) |
+| b | Se for dashboard funcional: Sonnet + revisão técnica; se for interface premium: Design Director Opus 5.5 aprova direção e render, implementação delimitada + QA visual |
+| c | Motion Director (Opus 5.5) faz storyboard, TODO código de Motion, render e QA; nunca transfere animação a Codex/Sonnet; sem Remotion (trabalho) |
 | d | `$imagegen`; logo em SVG |
+| e | Design Director (Opus 5.5) + Motion Director (Opus 5.5) para toda animação; validar mobile, tablet, desktop e redução de movimento |
 
 **2. Hooks do Codex:** recrute um Codex Sol 1 e um Codex Sol 2, digite `/hooks` em cada um, **clique dentro do terminal** (não na barra "Mensagem para…") e aperte `t`. A coluna *Active* deve ficar em 1. Depois `esc` até voltar ao prompt.
 
