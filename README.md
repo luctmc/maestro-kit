@@ -51,7 +51,7 @@ Tudo fica na sua pasta de usuário (`/Users/lucas`, escrito `~`). As pastas que 
 
 | Camada | O quê | Onde fica | No kit |
 | --- | --- | --- | --- |
-| App Maestri | Contas, presets, roles (Maestro, Motion Director e Design Director) | Dados do Maestri; backup em Configurações → Dados | `maestri/` |
+| App Maestri | Contas, presets, roles (Maestro, Motion Director, Motion Helper, Motion Render e Design Director) | Dados do Maestri; backup em Configurações → Dados | `maestri/` |
 | Máquina | Travas de git, skills só pelo nome, `maxEffortLevel`, `attribution`, hooks do RTK | `~/.claude/settings.json` | `claude/` |
 | Máquina | Preferências gerais (PT-BR, Caveman, Ponytail, regra dos workers) | `~/.claude/CLAUDE.md` e `~/.codex/AGENTS.md` (cada um importa o `RTK.md` da própria pasta) | `claude/`, `codex/` (inclui os dois `RTK.md`) |
 | Máquina | Plugins do Claude (Superpowers, Ponytail, Caveman, mattpocock, oficiais, cloud) | `~/.claude/plugins/` | lista em `PLUGINS.md` |
@@ -60,6 +60,7 @@ Tudo fica na sua pasta de usuário (`/Users/lucas`, escrito `~`). As pastas que 
 | Máquina | Hook do RTK no Codex (os hooks do Ponytail e do Superpowers vêm dos plugins) | `~/.codex/hooks.json` | `codex/` |
 | Máquina | RTK (exclusões de `maestri`, `git diff`, `git log`, `git status`) | `~/Library/Application Support/rtk/config.toml` e `filters.toml` | `rtk/` |
 | Máquina | Catálogo de skills, regra dos plugins de cloud, versões fixadas, scripts | `~/.maestro/` (`skills/CATALOG.md`, `skills/catalog/`, `profiles.md`, `vendor/TOOLKIT.lock`, `scripts/`) | `maestro/` |
+| Máquina | Times, gates e playbooks lidos pelos roles | `~/.maestro/maestri/` (`teams.md`, `quality-gates.md`, `design-playbook.md`, `motion-playbook.md`) | `maestri/` |
 | Máquina | Backups da instalação | `~/.maestro/backups/` | não vai |
 | Máquina | Identidade git (trabalho e pessoal) | `~/.gitconfig`, `~/.gitconfig-work`, `~/.gitconfig-personal` | `git/` |
 | Máquina | Caveman e Graphify | `~/.config/caveman/config.json`; `GRAPHIFY_NO_AUTO_REFRESH` em `~/.zshrc` | `config/`, `shell/` |
@@ -103,7 +104,7 @@ São duas partes: o que **você** faz à mão (esta seção, ~20 min) e o que o 
 
 ### 4. Presets (Terminal → Início Rápido)
 
-Crie estes 8 com "+ Adicionar preset". Depois **desmarque** os presets padrão "Claude Code" e "Codex" e mantenha "Shell". A lista também está em `maestri/presets.md`.
+Crie estes 10 com "+ Adicionar preset". Depois **desmarque** os presets padrão "Claude Code" e "Codex" e mantenha "Shell". A lista também está em `maestri/presets.md`.
 
 | Nome | Comando | Conta | Maestro |
 | --- | --- | --- | --- |
@@ -115,15 +116,18 @@ Crie estes 8 com "+ Adicionar preset". Depois **desmarque** os presets padrão "
 | Codex Luna 2 | `codex --yolo -m gpt-6-luna -c model_reasoning_effort=low` | Codex 2 | ☐ |
 | Motion Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☑ |
 | Design Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☑ |
+| Motion Helper | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☐ |
+| Motion Render | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort medium` | — | ☐ |
 
-O checkbox Maestro marcado no Motion Director é proposital: é o que permite a ele recrutar auxiliares.
+O checkbox Maestro marcado no Motion Director e no Design Director é proposital: é o que permite a eles recrutar auxiliares. Motion Helper e Motion Render ficam sem Maestro e não recrutam. Todo motion roda só em Opus 5.5; o Motion Render (medium) executa apenas renders e capturas mecânicas com comandos escritos por um Opus high.
 
 ### 5. Roles (Agentes → Responsabilidades)
 
 - [ ] "+ Nova responsabilidade" → **Maestro**, espaço de trabalho **Global**, instruções de `maestri/roles/maestro.md` (ou da seção "Textos dos roles").
 - [ ] "+ Nova responsabilidade" → **Motion Director**, **Global**, instruções de `maestri/roles/motion-director.md`.
 - [ ] "+ Nova responsabilidade" → **Design Director**, **Global**, instruções de `maestri/roles/design-director.md`.
-- [ ] Leia `maestri/routing-matrix.md` e `maestri/quality-gates.md`; mantenha ambos disponíveis ao Maestro junto dos roles.
+- [ ] "+ Nova responsabilidade" → **Motion Helper**, **Global**, instruções de `maestri/roles/motion-helper.md`; e **Motion Render**, **Global**, `maestri/roles/motion-render.md`.
+- [ ] O `restore.sh` copia `maestri/` para `~/.maestro/maestri/`: é de lá que os roles leem `teams.md` (catálogo de 15 times), `quality-gates.md`, `design-playbook.md` e `motion-playbook.md`. `routing-matrix.md` é só referência.
 
 ### 6. Primeiro terminal do Maestro
 
@@ -185,9 +189,15 @@ Step 5 - Verify (see section "Verificação final").
 
 Os textos completos e atuais estão em `maestri/roles/maestro.md`, `maestri/roles/motion-director.md` e `maestri/roles/design-director.md`. Cole cada um inteiro no campo **Instruções** do role correspondente (Agentes → Responsabilidades), com espaço de trabalho **Global**. Se você mudar algum role no Maestri, atualize também esses arquivos.
 
-## Atualização Quality-first (28/10/2026)
+## Atualização Times e Quality-first (28/10/2026)
 
-O kit agora define responsabilidades globais de Design Director e Motion Director, o roteiro de seleção de especialistas (`maestri/routing-matrix.md`) e os gates objetivos (`maestri/quality-gates.md`). O Maestro continua executando a integração pelo Maestri. O Motion Director não delega criação, edição ou implementação de Motion para modelos diferentes de Opus 5.5. Atualize os roles e presets globais no aplicativo; os arquivos do GitHub não reconfiguram automaticamente a instalação do Maestri.
+O Maestro agora escolhe o time pelo **tipo de tarefa** (`maestri/teams.md`, 15 times), escreve o brief em arquivo (nota 0–10, mínimo 7) e aceita só com evidência (`maestri/quality-gates.md`). Só o Design Director e o Motion Director recrutam auxiliares (profundidade 2).
+
+- **Design Director** (Opus 5.5 high): analisa o pedido e monta o time por sub-tarefa, podendo usar Claude, Codex, imagem ou Figma e trocar o time no meio da missão. Procedimento em `maestri/design-playbook.md`; doutrina na skill própria `skills/design-excellence/` (ainda não instalada: precisa de aprovação).
+- **Motion Director** (Opus 5.5 high): todo motion, sem exceção, só em Opus 5.5. Helpers: Motion Helper (high) e Motion Render (medium, só render mecânico). Tokens de motion, receitas, rubrica e QA por frames em `maestri/motion-playbook.md`.
+- Scouts somente leitura em Haiku (conferir o ID no CLI) ou subagente nativo; revisor novo do mesmo vendor por padrão, outro vendor só em auth, pagamento, dados pessoais e L3.
+
+Atualize roles e presets globais no aplicativo; os arquivos do GitHub não reconfiguram a instalação do Maestri sozinhos.
 
 ## Verificação final
 

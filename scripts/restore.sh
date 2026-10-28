@@ -30,6 +30,8 @@ put() {
 }
 
 put maestro "$HOME/.maestro"
+# Runtime docs the roles read (teams, gates, playbooks, role texts for pasting): ~/.maestro/maestri
+put maestri "$HOME/.maestro/maestri"
 put claude/settings.json "$HOME/.claude/settings.json"
 put claude/CLAUDE.md "$HOME/.claude/CLAUDE.md"
 put claude/RTK.md "$HOME/.claude/RTK.md"
@@ -65,3 +67,4 @@ fi
 
 echo "Backup of replaced files: $BK (absent if nothing existed)"
 echo "Next: recreate presets/roles/accounts from maestri/ and install plugins from PLUGINS.md."
+echo "skills/design-excellence is NOT installed by this script: copy it to ~/.claude/skills and ~/.agents/skills only after owner approval."
