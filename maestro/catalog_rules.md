@@ -3,6 +3,12 @@ Read before routing. Format per line: name | source | use when | do NOT use when
 Sources: SP=superpowers, PT=ponytail, CV=caveman, MP=mattpocock-skills, EK=emilkowalski/skills, RM=remotion-dev/skills, VM=vibe-motion/skills,
 IA/<pack>=iart-ai, AN=anthropics/skills, MB=Barty-Bart/motion-graphics, AZ=azure-skills, GC=google-plugins, DN=dotnet/skills, N8=n8n-mcp-skills.
 
+## Quality-first overlay
+- Read maestri/routing-matrix.md and maestri/quality-gates.md before staffing premium visual or motion tasks; use installed copies if kit directory is absent.
+- Premium websites and ambitious UI/UX require Design Director Claude Opus 5.5 high for art direction, prototypes and rendered visual acceptance. Ordinary functional UI can use Sonnet.
+- ALL motion/video/complex web animation direction, source implementation and QA are exclusively Motion Director Claude Opus 5.5 high. Stop when unavailable; never route animation code to Codex/Sonnet.
+- Skills only supplement capabilities; claiming skill use without invocation or visual QA without inspecting render fails the gate.
+
 ## Choice rules
 - Overlap -> debugging: SP systematic-debugging. TDD: SP test-driven-development. Code review: MP code-review. Plans/specs: SP brainstorming + writing-plans. Done-check: SP verification-before-completion. UI animation: EK (animate, review-animations). Motion video: Motion Director decides.
 - Remotion (any remotion-* skill, IA remotion-video, VM remotion-*): PERSONAL PROJECTS ONLY. Never in work repos (CIINTEC*).
