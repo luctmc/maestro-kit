@@ -15,3 +15,7 @@ Account names only; see accounts.md.
 | Codex Luna 1 | `codex --yolo -m gpt-6-luna -c model_reasoning_effort=low` | Padrão | [ ] |
 | Codex Luna 2 | `codex --yolo -m gpt-6-luna -c model_reasoning_effort=low` | Codex 2 | [ ] |
 | Motion Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | - | [x] |
+
+| Design Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | - | [x] |
+
+Model IDs must be validated in the installed CLI before use. Motion production is exclusively Opus 5.5; no downgraded motion worker.
