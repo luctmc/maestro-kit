@@ -228,3 +228,11 @@ Not stored in the kit. Account connectors live in the claude.ai account and need
 - claude.ai connectors seen in this session (ON, login state not verified): AWS, Canva, Claude Docs, Figma, Gmail, Goodnotes, Google Calendar, Google Drive, Higgsfield, HubSpot, Microsoft 365, Microsoft Learn, MongoDB Atlas, Notion, Resend, Stripe, Supabase, Three.js 3D Viewer, Trimble SketchUp, Vercel, Wispr Flow.
 - Claude plugin MCP: context7 (ON); plugin:data servers amplitude, amplitude-eu, atlassian, hex (ON); definite (ON, fails to connect: ENDPOINT_NOT_FOUND).
 - Codex MCP: node_repl (ON, ChatGPT app runtime).
+
+## Kit-local skills (not installed by restore.sh)
+
+| skill | path in kit | state |
+|---|---|---|
+| design-excellence | skills/design-excellence/ | PENDING owner approval to install; until then roles read skills/design-excellence/SKILL.md directly |
+
+Third-party design/motion skill candidates (taste-skill, apple-hig, oklch-skill, greensock/gsap-skills) are listed with pins in the research notes and are NOT installed; each needs owner approval.

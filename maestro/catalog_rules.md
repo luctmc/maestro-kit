@@ -4,10 +4,10 @@ Sources: SP=superpowers, PT=ponytail, CV=caveman, MP=mattpocock-skills, EK=emilk
 IA/<pack>=iart-ai, AN=anthropics/skills, MB=Barty-Bart/motion-graphics, AZ=azure-skills, GC=google-plugins, DN=dotnet/skills, N8=n8n-mcp-skills.
 
 ## Quality-first overlay
-- Read maestri/routing-matrix.md and maestri/quality-gates.md before staffing premium visual or motion tasks; use installed copies if kit directory is absent.
-- Premium websites and ambitious UI/UX require Design Director Claude Opus 5.5 high for art direction, prototypes and rendered visual acceptance. Ordinary functional UI can use Sonnet.
-- ALL motion/video/complex web animation direction, source implementation and QA are exclusively Motion Director Claude Opus 5.5 high. Stop when unavailable; never route animation code to Codex/Sonnet.
-- Skills only supplement capabilities; claiming skill use without invocation or visual QA without inspecting render fails the gate.
+- Team selection by task type: ~/.maestro/maestri/teams.md (15 teams). Gates and brief template: ~/.maestro/maestri/quality-gates.md.
+- Premium UI: Design Director (Claude Opus 5.5 high) composes its team per request; procedure in ~/.maestro/maestri/design-playbook.md; load design-excellence first.
+- Motion/video/UI animation: Motion Director and its helpers, Claude Opus 5.5 only ("Motion Render" at medium effort only for mechanical renders); per-job skill map in ~/.maestro/maestri/motion-playbook.md section G1. Never Codex, Sonnet, Haiku or Luna.
+- Skills are not evidence of quality; inspect real rendered results and report NOT_PROVEN when they cannot be seen.
 
 ## Choice rules
 - Overlap -> debugging: SP systematic-debugging. TDD: SP test-driven-development. Code review: MP code-review. Plans/specs: SP brainstorming + writing-plans. Done-check: SP verification-before-completion. UI animation: EK (animate, review-animations). Motion video: Motion Director decides.
