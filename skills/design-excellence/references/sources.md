@@ -1,0 +1,54 @@
+# Sources
+
+Canonical source list for the [S#] tags in this skill and in the kit design playbook. Read through fetch summaries in October 2026; re-verify before quoting to third parties.
+
+- S1 Anthropic, "Improving frontend design through skills": https://www.claude.com/blog/improving-frontend-design-through-skills
+- S2 Anthropic cookbook, prompting for frontend aesthetics: https://platform.claude.com/cookbook/coding-prompting-for-frontend-aesthetics
+- S3 anthropics/skills `frontend-design` SKILL.md: https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md (local copy `~/.agents/skills/frontend-design/SKILL.md` read in full)
+- S4 Anthropic Engineering, harness design for long-running apps: https://anthropic.com/engineering/harness-design-long-running-apps
+- S5 Awwwards evaluation: https://www.awwwards.com/about-evaluation/
+- S6 CSS Design Awards: https://www.cssdesignawards.com/about
+- S7 FWA (no current official weights; old figures UNVERIFIED): https://siliconprairienews.com/?p=458 , https://www.webdesignawards.io/awards/fwa
+- S8 Butterick, Practical Typography key rules: https://practicaltypography.com/summary-of-key-rules.html
+- S9 Every Layout axioms: https://every-layout.dev/rudiments/axioms/
+- S10 Utopia fluid type: https://utopia.fyi/type/
+- S11 WCAG 2.2 contrast minimum: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+- S12 WCAG 2.2 target size minimum: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+- S13 APCA in a nutshell: https://git.apcacontrast.com/documentation/APCA_in_a_Nutshell.html
+- S14 Scroll-driven animations (Baseline): https://web-platform-dx.github.io/web-features-explorer/features/scroll-driven-animations
+- S15 Container queries: https://web-platform-dx.github.io/web-features-explorer/features/container-queries
+- S16 text-wrap: balance: https://web-platform-dx.github.io/web-features-explorer/features/text-wrap-balance
+- S17 text-wrap: pretty: https://web-platform-dx.github.io/web-features-explorer/features/text-wrap-pretty
+- S18 backdrop-filter: https://web-platform-dx.github.io/web-features-explorer/features/backdrop-filter , https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
+- S19 clip-path: https://web-platform-dx.github.io/web-features-explorer/features/clip-path
+- S20 masks: https://web-platform-dx.github.io/web-features-explorer/features/masks
+- S21 View Transitions (same-document): https://web-platform-dx.github.io/web-features-explorer/features/view-transitions
+- S21b Cross-document View Transitions: https://web-platform-dx.github.io/web-features-explorer/features/cross-document-view-transitions
+- S22 MDN oklch(): https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch
+- S23 Code Arena WebDev leaderboard (2026-10-27): https://arena.ai/leaderboard/webdev
+- S24 Design Arena website board via benchlm (2026-10-27): https://benchlm.ai/benchmarks/designarenawebsite (designarena.ai shows no numbers to fetch)
+- S25 Text-to-image arena (2026-10-26): https://arena.ai/leaderboard/text-to-image
+- S26 GPT-6 Sol/Luna announcement: https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925 , https://9to5mac.com/2026/09/22/openai-upgrading-chatgpt-and-codex-with-two-more-gpt-6-models/ ("gpt-6.1-sol" release note not found: UNVERIFIED)
+- S27 Alethe: https://github.com/Kc1t/alethe-agents
+- S28 Figma MCP guide: https://github.com/figma/mcp-server-guide (tool names from this session's connector list)
+- S29 Impeccable: https://github.com/pbakaus/impeccable
+- S30 Josh Comeau, designing shadows: https://www.joshwcomeau.com/css/designing-shadows/
+- S31 MDN feTurbulence / numOctaves: https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/feTurbulence , https://developer.mozilla.org/docs/Web/SVG/Reference/Attribute/numOctaves ; grain write-up: https://loke-dev-lokedevs-projects.vercel.app/blog/svg-grain-textures-performance
+- S32 Paper Shaders performance: https://www.mintlify.com/paper-design/shaders/concepts/performance
+- S33 Opus 5.5 Code Arena board snapshot (2026-09-23): https://aiidelist.com/blog/claude-opus-5-5-code-arena-webdev
+- S34 Image-to-WebDev summary (2026-10-10, secondary): https://digg.com/ai/mw8muo0u
+- S35 MDN @property: https://developer.mozilla.org/en-US/docs/Web/CSS/@property
+- S36 vercel-labs/agent-skills: https://github.com/vercel-labs/agent-skills
+- S37 anthropics/skills: https://github.com/anthropics/skills
+- S38 ui-ux-pro-max: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+- S39 shadcn skills: https://ui.shadcn.com/docs/skills
+- S40 openai/skills: https://github.com/openai/skills
+- S41 taste-skill: https://github.com/Leonxlnx/taste-skill (read at 12af471)
+- S42 HIGAgentSkills: https://github.com/justinwetch/HIGAgentSkills (read at 2206ff9)
+- S43 make-interfaces-feel-better: https://github.com/jakubkrehel/make-interfaces-feel-better (read at 35545ea)
+- S44 oklch-skill: https://github.com/jakubkrehel/oklch-skill (read at 0e81f04)
+- S45 hig-doctor: https://github.com/raintree-technology/hig-doctor (read at 48bd383; tag v2.0.0 = 2eae6e1)
+- S46 huashu-design: https://github.com/alchaincyf/huashu-design (read at 4fc7bfd)
+- S47 interface-design: https://github.com/Dammyjay93/interface-design (read at 2f9be32)
+- S48 web-interface-guidelines: https://github.com/vercel-labs/web-interface-guidelines (read at 434b7f9)
+- S49 emilkowalski/skills: https://github.com/emilkowalski/skills (read at 2d22863)
