@@ -9,6 +9,7 @@ Tier: S <=15k tok, M ~15-80k, L >80k (estimates, not measured). Max live agents 
 - Helper classes: scout (read-only: native Explore, or a Haiku preset after verifying its model id in the CLI), writer (floor + owned paths), reviewer (fresh session, never the author; same vendor by default, other vendor only for auth, payment, personal data and L3), runner (Codex Luna, verbatim commands; never in motion).
 - Helper break-even: spawn only if the task needs >~8k tokens of reads/output or runs in parallel on disjoint files.
 - No helper runs git writes.
+- Default skills (alethe, unslop, emil-design-eng, animate, review-animations) are installed per project; the Maestro names the fitting ones in each brief (see roles/maestro.md). Other skills are situational and named only when the row asks for them.
 
 ## 1 Trivial fix
 Signals: one file, <=20 lines, typo/rename/config, questions. Lead: Maestro itself. Gate: Code (run one check). Tier S. Recruits: 0.

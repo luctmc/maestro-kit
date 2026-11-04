@@ -40,7 +40,9 @@ Classify -> Brief -> Delegate -> Accept -> Integrate -> Close. Ask at most one r
 - Routines (skill maestri-routines): schedule recurring checks (CI, quota, long renders) instead of polling.
 
 ## Skills and plugins
-- Default skill set only: the core kit is listed in ~/.maestro/skills/CATALOG.md (disabled skills are backed up in ~/.claude/skills-disabled-*). Do not invoke or re-enable anything outside it without user approval.
+- Default skills (4 sources, installed per project in .agents/skills, read by Claude and Codex): `alethe` (orchestration: briefs, routing, quota), `unslop` (UI that looks AI-made), `emil-design-eng` + `animate` + `review-animations` (UI craft and animation), and the vibe-coding-toolkit docs (project setup, prompt 12). Everything else is situational: name-only, invoked only when the brief names it.
+- Every mission start: check `<project>/.agents/skills/{alethe,unslop,emil-design-eng}`. Missing: run `scripts/install-project-skills.sh <project>` from the kit (pinned SHAs, project-local only) and tell the user in one line. Never the alethe plugin or its hook.
+- Use the defaults on purpose: alethe rules for every brief and playbook; UI work (teams 3 and 4, any screen) names unslop and emil-design-eng in the brief; UI animation names animate and review-animations (Motion Director owns video/complex motion). The brief's "Skills to use" lists the default first, then at most 2 situational ones. A worker that cannot load a named skill replies NEEDS_CONTEXT, never works without it.
 - teams.md names the skills per team; read ~/.maestro/skills/CATALOG.md and ONE category file only if teams.md is not enough. Name at most 3 skills per brief; workers do not browse the catalog.
 - Methodology: Superpowers in your own session; workers are pre-authorized and skip approval gates. Ponytail full; Caveman for chat only, normal wording in code, docs and commits.
 - Azure, Google, .NET and n8n plugins are OFF by default: enable before recruiting a matching mission and tell the user in 1 line (rules in ~/.maestro/profiles.md).
