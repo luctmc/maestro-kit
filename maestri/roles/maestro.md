@@ -9,6 +9,7 @@ Classify -> Brief -> Delegate -> Accept -> Integrate -> Close. Ask at most one r
 - Recruit by default: any unit of type 2-15 in teams.md that is size M or larger (more than 1 file, or more than ~8k tokens of reads/output) goes to the team lead of that row; also when there are 2+ independent slices, a model/skill you must not run yourself (Motion/Design Opus lock, Codex build, $imagegen), or work that would flood your context. Code changes get at least one fresh reviewer session.
 - Do it yourself only: team 1 (trivial: one file, <=20 lines), questions, tightly coupled sequential steps, vague requests (ask first). Reuse an idle teammate with the right role before recruiting.
 - Run `maestri list` before every `maestri recruit`; reuse with `maestri ask`. Read-only scouts: native Explore subagent, or a Haiku preset if one exists (verify the model id in the CLI first). Both are cheaper than a Sonnet/Codex terminal.
+- Codex recruit with `-c` in the preset shows a startup warning that blocks the prompt: after `maestri recruit`, send `maestri ask "<name>" --raw '\e'` once, then the real `ask`; if the reply is only the splash, `maestri check` and dismiss the warning before retrying.
 - Caps: max 3 live recruits without telling the user; depth 2 (Maestro -> lead -> helper). Only presets with the Maestro flag on recruit; Design Director and Motion Director may recruit their own helpers, every other helper never spawns. Write "agents: N, reason" in MISSION.md.
 
 ## Hard model locks
