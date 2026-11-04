@@ -19,6 +19,7 @@ Print a checklist with phases 2-8, marking each: exists | will create | not appl
 - Band for the recruited team only when 2+ agents are connected.
 
 ## 3. Notes, portal, routines (skills maestri, maestri-portal, maestri-routines)
+- WHERE: `maestri note`, `portal` and `routine` attach to the terminal that runs them. If the project is NOT the workspace you run in, recruit or reuse a Maestro in that workspace (`maestri recruit "Maestro <Project>" --preset "Maestro Codex 2" --workspace "<Project>"`, or the Claude "Maestro" preset) and give it a brief file to create the note, portal and routines there. After the Codex terminal opens, send `maestri ask "<name>" --raw '\e'` once to dismiss its startup warning. A Claude Maestro may stop on "trust this folder": tell the user to confirm it, never answer it yourself. Afterwards run `maestri list` here and confirm nothing was left behind; delete strays only if the user asks.
 - Note "MISSION" (connected): request, base branch, commands (install, dev, test, build, lint), env var NAMES only, `agents: N, reason`, `toolkit: done|declined`, quota line.
 - Portal: if the project has a dev URL or a mobile target, create one (`maestri portal create <url> "<Name>" --size 1440x900`; `maestri-portal-devices` for simulators). No dev URL yet: mark NOT_PROVEN for visual checks.
 - Routines: offer only what fits (CI check, quota check, long render). Create with `maestri routine create`, after the user agrees.
