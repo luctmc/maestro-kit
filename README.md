@@ -60,6 +60,7 @@ Tudo fica na sua pasta de usuário (`/Users/lucas`, escrito `~`). As pastas que 
 | Máquina | Hook do RTK no Codex (os hooks do Ponytail e do Superpowers vêm dos plugins) | `~/.codex/hooks.json` | `codex/` |
 | Máquina | RTK (exclusões de `maestri`, `git diff`, `git log`, `git status`) | `~/Library/Application Support/rtk/config.toml` e `filters.toml` | `rtk/` |
 | Máquina | Catálogo de skills, regra dos plugins de cloud, versões fixadas, scripts | `~/.maestro/` (`skills/CATALOG.md`, `skills/catalog/`, `profiles.md`, `vendor/TOOLKIT.lock`, `scripts/`) | `maestro/` |
+| Projeto | 4 skills padrão (alethe, unslop, emilkowalski, vibe-coding-toolkit) | `<projeto>/.agents/skills` e `.claude/skills`, instaladas por `scripts/install-project-skills.sh <projeto>`; o Maestro confere e instala no início da missão; o toolkit se aplica pelo prompt 12 quando falta `docs/setup.md` | `scripts/`, `maestro/vendor/TOOLKIT.lock` |
 | Máquina | Times, gates e playbooks lidos pelos roles | `~/.maestro/maestri/` (`teams.md`, `quality-gates.md`, `design-playbook.md`, `motion-playbook.md`, `execution-playbooks.md`) | `maestri/` |
 | Máquina | Backups da instalação | `~/.maestro/backups/` | não vai |
 | Máquina | Identidade git (trabalho e pessoal) | `~/.gitconfig`, `~/.gitconfig-work`, `~/.gitconfig-personal` | `git/` |
