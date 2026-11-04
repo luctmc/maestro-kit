@@ -36,3 +36,9 @@ iart-ai/tiktok-video-skills=2a775336b5a638cbf8a61dbd785f9a1b649be016
 anthropics/skills=dbd4588f9e1033efb41dad4bef2f7947c8993d44 (frontend-design, canvas-design only)
 iart-ai/lower-thirds-skills: NOT installed (conflict: lower-thirds already from tiktok-video-skills)
 # 77 Step3 skills: Claude skillOverrides=name-only (settings.json); Codex policy.allow_implicit_invocation=false (each skill agents/openai.yaml). List: ~/.maestro/step3-skills.json
+
+# Default project skills (2026-11-04): 4 sources, installed per project by scripts/install-project-skills.sh
+Kc1t/alethe-orchestrate-skill=5b8cd47675cc7353c0e1b21fc4a1795e7128c492 (skills/alethe only; the plugin hook is NOT installed)
+heydamir/unslop=a6f121eee5f29c2f74976b75456feae8b66afb3a
+emilkowalski/skills=f1090bec277140d02ed202440185ad9d02ac1490 (emil-design-eng, animate, review-animations)
+soumatheusgomes/vibe-coding-toolkit=21b71b68679c11184f49c23168852014bf6dde8b (docs/templates; applied via docs/prompts/12)

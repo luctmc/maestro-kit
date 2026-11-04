@@ -20,3 +20,17 @@ IA/<pack>=iart-ai, AN=anthropics/skills, MB=Barty-Bart/motion-graphics, AZ=azure
 - Workers: Maestro names skills in the brief; workers do not browse this catalog. Workers do not use handoff/claude-handoff skills; they update HANDOFF.md.
 - Methodology: Ponytail full + Caveman concise chat; code, docs and commits stay in normal wording.
 - Always-on listing cost ~8.2k tok (skill-doctor, upper bound). Cloud on-demand adds: azure ~6.3k, dotnet core ~11.1k, n8n ~4.0k, gcp ~0.8k.
+
+## Core skill set (2026-11-04 cleanup)
+Evidence: 231 sessions, ~29 skills ever invoked. Active in ~/.claude/skills (51): maestri* (7), oc-showcase/stamp/blackbox/builder/route/copywriting, frontend-design, emil-design-eng, apple-design, break-ui, unslop, qa-fix-protocol, prototype, colorize, remotion-best-practices/create/render, and the motion set required by motion-playbook (motion-art-direction, shot-composition, animation-principles/performance, accessible-animation, review-animations, gsap-web, beat-sync-editing, sound-effects, kinetic-typography, color-motion, logo-animation, animate, business-motion-film, brand-launch-video-star, svg-animation, lottie-animation, page-transition-animation, micro-interaction, motion-background, canvas-design, diagram-animation, chart-animation, explainer-default/engaging/high-energy).
+Plugins ON: superpowers, ponytail, caveman, mattpocock-skills, context7, code-review, skill-creator, LSPs.
+Disabled (56 symlinks/dirs moved to ~/.claude/skills-disabled-20261104; restore with mv back): niche renders, other explainer/remotion-*, oil-motion, oc-guide/mcp/pilot/scout/conveyor, senior-fullstack, write-swift, pick-ui-library, ask-sonner and similar.
+
+## Default project skills (4 sources, 2026-11-04)
+Installed per project (never globally) with `scripts/install-project-skills.sh <project>`, pinned in maestro/vendor/TOOLKIT.lock: alethe-orchestrate-skill (alethe), unslop, emilkowalski/skills (emil-design-eng, animate, review-animations), vibe-coding-toolkit (methodology docs, applied with its prompt 12).
+Every other skill is situational: name-only, the Maestro names it in the brief under "Skills to use" when the mission needs it. Do not add a fifth default without user approval.
+
+## Same policy on Claude and Codex
+- Claude: `skillOverrides` name-only in ~/.claude/settings.json. Codex: `agents/openai.yaml` with `allow_implicit_invocation: false` in each skill of ~/.codex/skills (and ~/.agents/skills). Codex does not read ~/.claude/settings.json.
+- Disabled on both: oc-guide, oc-mcp, oc-pilot, oc-scout, oc-conveyor (moved to skills-disabled-20261104 in ~/.claude and ~/.codex).
+- The 4 default sources live in each project's .agents/skills (read by both CLIs) with links in .claude/skills.
