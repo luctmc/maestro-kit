@@ -44,6 +44,9 @@ put git/gitconfig "$HOME/.gitconfig"
 put git/gitconfig-work "$HOME/.gitconfig-work"
 put git/gitconfig-personal "$HOME/.gitconfig-personal"
 put config/caveman/config.json "$HOME/.config/caveman/config.json"
+# Kit-owned command skill: /maestro-setup (Claude) and $maestro-setup (Codex). Name-only/implicit-off come from settings.json and its agents/openai.yaml.
+put skills/maestro-setup "$HOME/.claude/skills/maestro-setup"
+put skills/maestro-setup "$HOME/.agents/skills/maestro-setup"
 
 # RTK config (carries the git diff/log/status/maestri exclusions). macOS path only.
 # shortcut: Linux and Windows keep RTK config elsewhere; add those paths when the kit is restored there.
@@ -66,5 +69,5 @@ if ! grep -qxF "$LINE" "$HOME/.zshrc" 2>/dev/null; then
 fi
 
 echo "Backup of replaced files: $BK (absent if nothing existed)"
-echo "Next: recreate presets/roles/accounts from maestri/ and install plugins from PLUGINS.md."
+echo "Next: recreate presets/accounts from maestri/presets.md, write roles with maestri role write (README step 5), install plugins/skills from PLUGINS.md, then run scripts/apply-skill-policy.sh."
 echo "skills/design-excellence is NOT installed by this script: copy it to ~/.claude/skills and ~/.agents/skills only after owner approval."

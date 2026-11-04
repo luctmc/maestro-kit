@@ -105,7 +105,7 @@ São duas partes: o que **você** faz à mão (esta seção, ~20 min) e o que o 
 
 ### 4. Presets (Terminal → Início Rápido)
 
-Crie estes 10 com "+ Adicionar preset". Depois **desmarque** os presets padrão "Claude Code" e "Codex" e mantenha "Shell". A lista também está em `maestri/presets.md`.
+Crie estes 12 com "+ Adicionar preset". Depois **desmarque** os presets padrão "Claude Code" e "Codex" e mantenha "Shell". A lista também está em `maestri/presets.md`.
 
 | Nome | Comando | Conta | Maestro |
 | --- | --- | --- | --- |
@@ -115,15 +115,20 @@ Crie estes 10 com "+ Adicionar preset". Depois **desmarque** os presets padrão 
 | Codex Sol 2 | `codex --yolo -m gpt-6.1-sol -c model_reasoning_effort=medium` | Codex 2 | ☐ |
 | Codex Luna 1 | `codex --yolo -m gpt-6-luna -c model_reasoning_effort=low` | Padrão | ☐ |
 | Codex Luna 2 | `codex --yolo -m gpt-6-luna -c model_reasoning_effort=low` | Codex 2 | ☐ |
+| Maestro Codex 1 | `codex --yolo -m gpt-6.1-sol -c model_reasoning_effort=medium` | Padrão | ☑ |
+| Maestro Codex 2 | `codex --yolo -m gpt-6.1-sol -c model_reasoning_effort=medium` | Codex 2 | ☑ |
 | Motion Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☑ |
 | Design Director | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☑ |
 | Motion Helper | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort high` | — | ☐ |
 | Motion Render | `claude --dangerously-skip-permissions --model claude-opus-5-5 --effort medium` | — | ☐ |
 
+Os 3 Maestros (Maestro em Claude, Maestro Codex 1 e Maestro Codex 2) usam o mesmo role Maestro e a mesma política de skills; o Maestri grava o role como `CLAUDE.md` e `AGENTS.md`. Com presets Codex que usam `-c`, o primeiro terminal abre com um aviso ("Running without the shared background server") que trava o primeiro prompt: aperte `esc` uma vez (o Maestro faz isso sozinho ao recrutar, regra no role).
+
 O checkbox Maestro marcado no Motion Director e no Design Director é proposital: é o que permite a eles recrutar auxiliares. Motion Helper e Motion Render ficam sem Maestro e não recrutam. Todo motion roda só em Opus 5.5; o Motion Render (medium) executa apenas renders e capturas mecânicas com comandos escritos por um Opus high.
 
 ### 5. Roles (Agentes → Responsabilidades)
 
+- [ ] Alternativa à colagem manual, a partir de um terminal Maestro: `maestri role write "Maestro" "$(cat maestri/roles/maestro.md)"` (o role precisa existir; o mesmo vale para os outros 4 com seus arquivos em `maestri/roles/`). Confira depois com `maestri role show "Maestro"`.
 - [ ] "+ Nova responsabilidade" → **Maestro**, espaço de trabalho **Global**, instruções de `maestri/roles/maestro.md` (ou da seção "Textos dos roles").
 - [ ] "+ Nova responsabilidade" → **Motion Director**, **Global**, instruções de `maestri/roles/motion-director.md`.
 - [ ] "+ Nova responsabilidade" → **Design Director**, **Global**, instruções de `maestri/roles/design-director.md`.
@@ -149,7 +154,7 @@ Rules: one step at a time; before each step show exactly what will change and wa
 1. Read README.md, PLUGINS.md and maestro/vendor/TOOLKIT.lock from the kit.
 2. Run scripts/restore.sh (it backs up what exists, then copies settings, CLAUDE.md, AGENTS.md, both RTK.md, Codex rules/hooks, RTK config, gitconfig files, caveman config, ~/.maestro). Show me the list of overwritten files first. On Windows/Linux, adapt the paths first.
 3. Reinstall every tool, plugin and skill listed in PLUGINS.md at the recorded versions/SHAs, keeping each one enabled/disabled exactly as listed.
-4. Re-apply: skillOverrides "name-only" for motion/design skills (Claude) and allow_implicit_invocation: false (Codex) as listed.
+4. Re-apply the skill policy: Claude skillOverrides "name-only" already come from claude/settings.json; for Codex and ~/.agents run scripts/apply-skill-policy.sh (allow_implicit_invocation: false for the situational skills; oc-guide/mcp/pilot/scout/conveyor moved to skills-disabled-kit). Then install the 4 default skills in each project with scripts/install-project-skills.sh <project> and test /maestro-setup (Claude) and $maestro-setup (Codex) in a new Maestro session.
 5. Verify (see section "Verificação final") and tell me which terminals must be restarted.
 ```
 
@@ -199,6 +204,13 @@ O Maestro agora escolhe o time pelo **tipo de tarefa** (`maestri/teams.md`, 15 t
 - Scouts somente leitura em Haiku (conferir o ID no CLI) ou subagente nativo; revisor novo do mesmo vendor por padrão, outro vendor só em auth, pagamento, dados pessoais e L3.
 
 Atualize roles e presets globais no aplicativo; os arquivos do GitHub não reconfiguram a instalação do Maestri sozinhos.
+
+## Windows ou outro Mac
+
+- **Outro Mac:** os mesmos passos do Caminho A; só o `codex/config.toml` mantém caminhos `/Users/lucas` e precisa de revisão. As aprovações de hooks do Codex (`/hooks`) e o login das contas Padrão e Codex 2 são refeitos na máquina nova.
+- **Windows 11:** `restore.sh`, `apply-skill-policy.sh` e `install-project-skills.sh` são bash. Use **WSL** (recomendado, tem `rsync`) ou Git Bash (sem `rsync`: copie `maestro/`, `maestri/` e `claude/` na mão). Troque `~/Documents/GitHub/...` pelos caminhos reais nos roles, na skill `maestro-setup` e nos scripts. A config do RTK (`rtk/*.toml`) vai para a pasta do RTK no Windows, por conta própria.
+- **Não testado:** nada disso foi rodado no Windows nem em outro Mac; confira a lista da "Verificação final" depois de instalar.
+- O `codex/config.toml` do kit não inclui os `trusted_hash` de hooks nem projetos confiáveis da máquina de origem, de propósito.
 
 ## Verificação final
 
