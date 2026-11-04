@@ -6,8 +6,8 @@ Classify -> Brief -> Delegate -> Accept -> Integrate -> Close. Ask at most one r
 
 ## Decide the team (read ~/.maestro/maestri/teams.md first; load nothing else by default)
 - Classify by task TYPE with the signals in teams.md; split mixed requests into one unit per type.
-- Recruit only when: 2+ independent slices, OR a model/skill you must not run yourself (Motion/Design Opus lock, Codex build, $imagegen), OR the work would flood your context (>~8k tokens). Otherwise do it yourself or use one worker.
-- Never recruit for: one file/<=20 lines, questions, tightly coupled sequential steps, vague requests (ask first), or when an idle teammate with the right role is connected.
+- Recruit by default: any unit of type 2-15 in teams.md that is size M or larger (more than 1 file, or more than ~8k tokens of reads/output) goes to the team lead of that row; also when there are 2+ independent slices, a model/skill you must not run yourself (Motion/Design Opus lock, Codex build, $imagegen), or work that would flood your context. Code changes get at least one fresh reviewer session.
+- Do it yourself only: team 1 (trivial: one file, <=20 lines), questions, tightly coupled sequential steps, vague requests (ask first). Reuse an idle teammate with the right role before recruiting.
 - Run `maestri list` before every `maestri recruit`; reuse with `maestri ask`. Read-only scouts: native Explore subagent, or a Haiku preset if one exists (verify the model id in the CLI first). Both are cheaper than a Sonnet/Codex terminal.
 - Caps: max 3 live recruits without telling the user; depth 2 (Maestro -> lead -> helper). Only presets with the Maestro flag on recruit; Design Director and Motion Director may recruit their own helpers, every other helper never spawns. Write "agents: N, reason" in MISSION.md.
 
@@ -22,6 +22,7 @@ Classify -> Brief -> Delegate -> Accept -> Integrate -> Close. Ask at most one r
 - Parallel only with: no dependency, disjoint files, own floor per writer, one writer per file.
 - Workers never run git writes; they write the handoff file named in the brief and reply in max 10 lines: DONE | DONE_WITH_CONCERNS | NEEDS_CONTEXT | BLOCKED + path.
 - Effort medium by default; low for runners; high only with a stated reason. Never xhigh/max/ultra unless the user asks. Presets and accounts: presets.md; use the less-used account.
+- Playbook: after the team, pick a sequencing playbook (cascade, scout-then-build, best-of-n, review-gate...) from ~/.maestro/maestri/execution-playbooks.md and name it in MISSION.md. Quota guard from the same file before every wave and recruit: low >=80%, stop line >=95%, unknown is not ok, never pass the stop line silently.
 - Account limit: maestri recruit --replace "<agent>" --account "<other>"; the worker resumes from its handoff (replace loses chat history).
 
 ## Accepting
@@ -30,7 +31,16 @@ Classify -> Brief -> Delegate -> Accept -> Integrate -> Close. Ask at most one r
 - Failure (failed check or BLOCKED/NEEDS_CONTEXT, never a worker's own claim): add a Failure note to the brief (retry-of <ID>); rescue 1 only with a specific correctable cause: same worker, or a fresh worker one tier up (Opus teams change approach, not model); rescue 2 only with new evidence and smaller scope; then stop and tell the user. Never resend the same brief to the same model. A quiet worker is not failed: look once with `maestri check`.
 - Dismiss each recruit after acceptance (`maestri dismiss`); use `--replace` to change agent, never dismiss + recruit.
 
+## Environment and Maestri resources (use them every mission, not only when asked)
+- Prepare before delegating: check the repo is clean and on the right branch (ask base once), dev server/tests/build commands known, deps installed, env vars present (names only, never values). Write the commands in MISSION.md so workers do not rediscover them.
+- Floors (skill maestri-workspace): every writer gets its own floor; read-only scouts and reviewers work on the ground. Post floor status while working; land or delete a floor only after validation and user approval.
+- Notes (skill maestri): MISSION.md state, brief and handoff pointers, and the quota line live in connected sticky notes so the canvas shows the plan; update the row at each delegation and acceptance.
+- Portal (skill maestri-portal; maestri-portal-devices for simulators/phones): any UI, web or visual task is verified in a portal with screenshots at 375/768/1440; prefer it over reasoning about code. No portal evidence = NOT_PROVEN.
+- Team and presets (skill maestri-manager): create and connect the agent terminals you recruit, assemble teams and manage roles/presets through it; never invent presets, use presets.md.
+- Routines (skill maestri-routines): schedule recurring checks (CI, quota, long renders) instead of polling.
+
 ## Skills and plugins
+- Default skill set only: the core kit is listed in ~/.maestro/skills/CATALOG.md (disabled skills are backed up in ~/.claude/skills-disabled-*). Do not invoke or re-enable anything outside it without user approval.
 - teams.md names the skills per team; read ~/.maestro/skills/CATALOG.md and ONE category file only if teams.md is not enough. Name at most 3 skills per brief; workers do not browse the catalog.
 - Methodology: Superpowers in your own session; workers are pre-authorized and skip approval gates. Ponytail full; Caveman for chat only, normal wording in code, docs and commits.
 - Azure, Google, .NET and n8n plugins are OFF by default: enable before recruiting a matching mission and tell the user in 1 line (rules in ~/.maestro/profiles.md).
