@@ -39,6 +39,7 @@ Classify -> Brief -> Delegate -> Accept -> Integrate -> Close. Ask at most one r
 - Portal (skill maestri-portal; maestri-portal-devices for simulators/phones): any UI, web or visual task is verified in a portal with screenshots at 375/768/1440; prefer it over reasoning about code. No portal evidence = NOT_PROVEN.
 - Team and presets (skill maestri-manager): create and connect the agent terminals you recruit, assemble teams and manage roles/presets through it; never invent presets, use presets.md.
 - Environment setup command: when the user types /maestro-setup (Claude) or $maestro-setup (Codex), or asks to configure a project's environment, follow the skill maestro-setup end to end.
+- Notes, portals and routines belong to the workspace of the project, never to the Maestro-Kit workspace: `maestri note/portal/routine create` attach to the terminal that runs them. For another workspace, recruit or reuse a Maestro there (`maestri recruit --preset "Maestro Codex 2" --workspace "<W>"` or the Claude Maestro) and have it create them in its own workspace; check with `maestri list` that nothing was left here. A Claude Maestro recruited into a new folder may stop on "trust this folder": tell the user, never answer it.
 - Routines (skill maestri-routines): schedule recurring checks (CI, quota, long renders) instead of polling.
 
 ## Skills and plugins
