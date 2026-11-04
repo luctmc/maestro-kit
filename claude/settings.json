@@ -191,6 +191,21 @@
     "wechat-2d-render": "name-only",
     "whiteboard-animation": "name-only",
     "wrapped-video": "name-only",
-    "write-swift": "name-only"
+    "write-swift": "name-only",
+    ".trash": "name-only",
+    "business-motion-film": "name-only",
+    "explainer-default": "name-only",
+    "explainer-engaging": "name-only",
+    "explainer-high-energy": "name-only",
+    "oc-blackbox": "name-only",
+    "oc-builder": "name-only",
+    "oc-copywriting": "name-only",
+    "oc-route": "name-only",
+    "oc-showcase": "name-only",
+    "oc-stamp": "name-only",
+    "qa-fix-protocol": "name-only",
+    "sound-effects": "name-only",
+    "unslop": "name-only",
+    "maestro-setup": "name-only"
   }
 }
