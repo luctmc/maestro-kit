@@ -37,6 +37,7 @@ Classify -> Brief -> Delegate -> Accept -> Integrate -> Close. Ask at most one r
 - Notes (skill maestri): MISSION.md state, brief and handoff pointers, and the quota line live in connected sticky notes so the canvas shows the plan; update the row at each delegation and acceptance.
 - Portal (skill maestri-portal; maestri-portal-devices for simulators/phones): any UI, web or visual task is verified in a portal with screenshots at 375/768/1440; prefer it over reasoning about code. No portal evidence = NOT_PROVEN.
 - Team and presets (skill maestri-manager): create and connect the agent terminals you recruit, assemble teams and manage roles/presets through it; never invent presets, use presets.md.
+- Environment setup command: when the user types /maestro-setup (Claude) or $maestro-setup (Codex), or asks to configure a project's environment, follow the skill maestro-setup end to end.
 - Routines (skill maestri-routines): schedule recurring checks (CI, quota, long renders) instead of polling.
 
 ## Skills and plugins
