@@ -1,5 +1,5 @@
 # Teams — Maestro runtime catalog
-Pick the row by TASK TYPE. Recruit only if the trigger test in roles/maestro.md passes. Presets/accounts: presets.md. Gates and brief template: quality-gates.md.
+Pick the row by TASK TYPE. Recruit only if the trigger test in roles/maestro.md passes. Presets/accounts: presets.md. Gates and brief template: quality-gates.md. Sequencing playbooks and quota guard: execution-playbooks.md.
 Tier: S <=15k tok, M ~15-80k, L >80k (estimates, not measured). Max live agents = recruits + native subagents.
 "Opus" = preset Motion Director or Design Director (claude-opus-5-5 high).
 

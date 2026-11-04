@@ -60,7 +60,7 @@ Tudo fica na sua pasta de usuário (`/Users/lucas`, escrito `~`). As pastas que 
 | Máquina | Hook do RTK no Codex (os hooks do Ponytail e do Superpowers vêm dos plugins) | `~/.codex/hooks.json` | `codex/` |
 | Máquina | RTK (exclusões de `maestri`, `git diff`, `git log`, `git status`) | `~/Library/Application Support/rtk/config.toml` e `filters.toml` | `rtk/` |
 | Máquina | Catálogo de skills, regra dos plugins de cloud, versões fixadas, scripts | `~/.maestro/` (`skills/CATALOG.md`, `skills/catalog/`, `profiles.md`, `vendor/TOOLKIT.lock`, `scripts/`) | `maestro/` |
-| Máquina | Times, gates e playbooks lidos pelos roles | `~/.maestro/maestri/` (`teams.md`, `quality-gates.md`, `design-playbook.md`, `motion-playbook.md`) | `maestri/` |
+| Máquina | Times, gates e playbooks lidos pelos roles | `~/.maestro/maestri/` (`teams.md`, `quality-gates.md`, `design-playbook.md`, `motion-playbook.md`, `execution-playbooks.md`) | `maestri/` |
 | Máquina | Backups da instalação | `~/.maestro/backups/` | não vai |
 | Máquina | Identidade git (trabalho e pessoal) | `~/.gitconfig`, `~/.gitconfig-work`, `~/.gitconfig-personal` | `git/` |
 | Máquina | Caveman e Graphify | `~/.config/caveman/config.json`; `GRAPHIFY_NO_AUTO_REFRESH` em `~/.zshrc` | `config/`, `shell/` |
@@ -127,7 +127,7 @@ O checkbox Maestro marcado no Motion Director e no Design Director é proposital
 - [ ] "+ Nova responsabilidade" → **Motion Director**, **Global**, instruções de `maestri/roles/motion-director.md`.
 - [ ] "+ Nova responsabilidade" → **Design Director**, **Global**, instruções de `maestri/roles/design-director.md`.
 - [ ] "+ Nova responsabilidade" → **Motion Helper**, **Global**, instruções de `maestri/roles/motion-helper.md`; e **Motion Render**, **Global**, `maestri/roles/motion-render.md`.
-- [ ] O `restore.sh` copia `maestri/` para `~/.maestro/maestri/`: é de lá que os roles leem `teams.md` (catálogo de 15 times), `quality-gates.md`, `design-playbook.md` e `motion-playbook.md`. `routing-matrix.md` é só referência.
+- [ ] O `restore.sh` copia `maestri/` para `~/.maestro/maestri/`: é de lá que os roles leem `teams.md` (catálogo de 15 times), `quality-gates.md`, `design-playbook.md`, `motion-playbook.md` e `execution-playbooks.md` (playbooks de execução e guarda de quota, adaptados do Alethe). `routing-matrix.md` é só referência.
 
 ### 6. Primeiro terminal do Maestro
 
