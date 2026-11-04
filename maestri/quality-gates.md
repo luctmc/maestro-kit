@@ -72,6 +72,7 @@ Owns: <paths>. Must not touch: <paths>.
 <absolute paths to specs, prior handoffs, design tokens. No pasted dossiers.>
 
 ## Skills to use (max 3, exact names, verified installed)
+(default project skills first when they fit: alethe, unslop, emil-design-eng, animate, review-animations; verify the folder exists in <project>/.agents/skills)
 <name, name>
 
 ## Return
